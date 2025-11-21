@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "../components/header/Header";
 import SelectCategory from "../components/home-components/SelectCategory";
+import { Car, Fuel, Settings, Snowflake } from "lucide-react";
 import useAxios from "../hooks/useAxios";
 import { useDispatch, useSelector } from "react-redux";
 import { setData } from "../redux/cars-data-slice";
@@ -59,36 +60,56 @@ const Home = () => {
                 </div>
               ))
             ) : (
-              <div className="mycon grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
-                {data &&
-                  data.map((car) => (
-                    <div key={car.id}>
-                      <img
-                        src={car.image}
-                        alt={car.name}
-                        className="w-[368px] h-[240px]"
-                      />
+              <div className="bg-white rounded-2xl shadow-md overflow-hidden">
+                <div className="relative  from-gray-50 to-gray-100 h-48 flex items-center justify-center overflow-hidden">
+                  {car.image ? (
+                    <img
+                      src={car.image}
+                      alt={car.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <Car className="w-32 h-32 text-gray-300" />
+                  )}
+                </div>
 
-                      <div className="flex justify-between mt-[20px] mr-[65px]">
-                        <h1>{car.name}</h1>
-                        <h2>{car.pricePerDay}</h2>
-                      </div>
-
-                      <div>{car.type}</div>
-                      <div>{car.fuel}</div>
-
-                      <div className="flex">
-                        <img
-                          src="../images/card-image/air.svg"
-                          className="w-[20px] h-[20px]"
-                          alt=""
-                        />
-                        {car.gearbox}
-                      </div>
-
-                      <div>{car.drive}</div>
+                <div className="p-5">
+                  <div className="flex items-start justify-between mb-4">
+                    <div>
+                      <h3 className="text-xl font-bold text-gray-900 mb-1">
+                        {car.name}
+                      </h3>
+                      <p className="text-sm text-gray-500">{car.type}</p>
                     </div>
-                  ))}
+                    <div className="text-right">
+                      <span className="text-3xl font-bold text-indigo-600">
+                        ${car.pricePerDay}
+                      </span>
+                      <p className="text-sm text-gray-500">per day</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
+                    <div className="flex items-center gap-1">
+                      <Settings className="w-4 h-4" />
+                      <span>{car.gearbox}</span>
+                    </div>
+                    <div className="flex items-center gap-1">
+                      <Fuel className="w-4 h-4" />
+                      <span>{car.fuel}</span>
+                    </div>
+                    {car.airConditioner && (
+                      <div className="flex items-center gap-1">
+                        <Snowflake className="w-4 h-4" />
+                        <span>AC</span>
+                      </div>
+                    )}
+                  </div>
+
+                  <button className="w-full bg-indigo-600 text-white font-semibold py-3 px-4 rounded-lg">
+                    View Details
+                  </button>
+                </div>
               </div>
             )}
           </div>
