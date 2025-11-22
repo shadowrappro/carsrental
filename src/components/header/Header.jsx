@@ -1,33 +1,37 @@
-import { Link } from 'react-router-dom'
-import headerLogo from '../../images/header-images/header-logo.svg'
-import phoneIcon from '../../images/header-images/phone-icon.svg'
+import React from "react";
+import HeaderLogo from "../../images/headerImages/rentCarLogo.svg";
+import phoneIcon from "../../images/headerImages/telephone.svg";
+import { Link } from "react-router-dom";
 
-const Header = () => {
-    return (
-        <header>
-            <div className='mycon flex items-center justify-between py-3'>
-                <Link to={"/"} >
-                    <img className="mycon w-[100px] h-10" src={headerLogo} alt="Car rental" />
-                </Link>
-                <nav className='header-links flex  items-center gap-3 md:gap-4 lg:gap-5'>
-                    <Link to={'/'} >Home</Link>
-                    <Link to={'/'} >Vehicles</Link>
-                    <Link to={'/'} >Detail</Link>
-                    <Link to={'/'} >About us</Link>
-                    <Link to={'/'} >Contact us</Link>
-                </nav>
+function Header() {
+  return (
+    <header>
+      <div className="mycon flex items-center justify-between py-3">
+        <Link to={"/"}>
+          <img
+            className="w-[150px] h-[60px]"
+            src={HeaderLogo}
+            alt="Car rental"
+          />
+        </Link>
+        <nav className="header-links flex items-center gap-3 md:gap-4 lg:gap-5">
+          <Link to={"/"}>Home</Link>
+          <Link to={"/"}>Vehicles</Link>
+          <Link to={"/"}>Detail</Link>
+          <Link to={"/"}>About Us</Link>
+          <Link to={"/"}>Contact Us</Link>
+        </nav>
 
-                <div className='flex items-center gap-2'>
-                    <img src={phoneIcon} alt="Phone icon" />
-                    <a className='flex flex-col' href="tel:+9962471680" >
-                        <span> Need help?</span>
-                        <span>+996 247-1680</span>
-                    </a>
-                </div>
-
-            </div>
-        </header>
-    )
+        <div className="flex items-center gap-2">
+          <img src={phoneIcon} alt="Phone Icon" />
+          <a className="flex flex-col" href="tel:+9962471680">
+            <span>Need help?</span>
+            <span>+996 247-1680</span>
+          </a>
+        </div>
+      </div>
+    </header>
+  );
 }
 
-export default Header
+export default Header;

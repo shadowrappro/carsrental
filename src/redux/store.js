@@ -3,6 +3,6 @@ import carsDataReducer from "./cars-data-slice";
 
 export const store = configureStore({
   reducer: {
-    carsdata: carsDataReducer,
+    carsData: carsDataReducer,
   },
 });
