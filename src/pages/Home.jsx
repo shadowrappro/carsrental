@@ -31,7 +31,7 @@ const Home = () => {
 
       <section className="all-cars">
         <div className="mycon ">
-          <div className="grid grid-cols-4 gap-5 mt-4">
+          <div className="grid grid-cols-3 gap-5 mt-4">
             {data &&
               data?.data.map((car) => <CarsCard key={car.id} car={car} />)}
           </div>
