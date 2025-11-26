@@ -1,12 +1,17 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import "../../../loader.css";
 
-function SelectCategory({type, setType}) {
+function SelectCategory({ type, setType }) {
   const data = useSelector((state) => state.carsData.data);
-  const categories = useSelector((state) => state.carsData.categorys)
+  const categories = useSelector((state) => state.carsData.categorys);
 
   if (!data?.data) {
-    return <h1 className="mycon text-center">Loading...</h1>;
+    return (
+      <div className="flex justify-center mt-20">
+        <div className="loader"></div>
+      </div>
+    );
   }
 
   return (
@@ -18,11 +23,10 @@ function SelectCategory({type, setType}) {
 
         <div className="w-[80%] m-auto gap-5 flex items-center justify-center">
           {categories.map((localType, idx) => (
-            <button 
-            onClick={() => {
-              setType(localType)
-              
-            }}
+            <button
+              onClick={() => {
+                setType(localType);
+              }}
               key={idx}
               className={`${
                 localType === type ? "bg-purple-500" : "bg-gray-500"
